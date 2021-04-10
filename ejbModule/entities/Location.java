@@ -19,6 +19,8 @@ public class Location {
 	private String coordX;
 	@Column(name = "COORD_Y")
 	private String coordY;
+	@Column(name = "ID_SHOP")
+	private long idShop;
 	
 	public Location() {
 		
