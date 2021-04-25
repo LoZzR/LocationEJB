@@ -1,16 +1,25 @@
 package entities;
 
+import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOCATION")
-public class Location {
+public class Location implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_LOCATION")
@@ -19,8 +28,9 @@ public class Location {
 	private String coordX;
 	@Column(name = "COORD_Y")
 	private String coordY;
-	@Column(name = "ID_SHOP")
-	private long idShop;
+	
+	@OneToMany(mappedBy = "location")
+    private Set<Shop> shops;
 	
 	public Location() {
 		

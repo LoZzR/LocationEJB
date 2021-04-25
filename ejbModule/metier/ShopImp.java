@@ -1,5 +1,7 @@
 package metier;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -7,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entities.Location;
+import entities.Shop;
 
 @Stateless(name = "Shop")
 public class ShopImp implements ShopLocal, ShopRemote {
@@ -35,5 +38,13 @@ public class ShopImp implements ShopLocal, ShopRemote {
 		
 		return location;
 	}
+
+	@Override
+	public List<Shop> getAllShop() {
+		Query query = em.createQuery("SELECT s.id, s.location FROM Shop s left join s.location order by s.id");
+		List<Shop> shops = query.getResultList();
+		
+		return shops;
+	} 
 
 }
