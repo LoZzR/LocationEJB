@@ -29,9 +29,6 @@ public class Location implements Serializable{
 	@Column(name = "COORD_Y")
 	private String coordY;
 	
-	@OneToMany(mappedBy = "location")
-    private Set<Shop> shops;
-	
 	public Location() {
 		
 	}

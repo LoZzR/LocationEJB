@@ -25,7 +25,7 @@ public class ShopImp implements ShopLocal, ShopRemote {
 	@Override
 	public Location getLocationByIdShop(long idShop) {
 		
-		Query query = em.createQuery("select l from Location l where l.idShop = :idShop");
+		Query query = em.createQuery("select s.location from Shop s where s.id = :idShop");
 		
 		query.setParameter("idShop", idShop);
 		
